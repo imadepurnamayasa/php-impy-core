@@ -27,4 +27,34 @@ class DateTimeManager {
         $interval = $this->dateTime->diff($otherDate);
         return $interval->format('%r%a');
     }
+
+    public function differenceInMonths($otherDateTime) {
+        $otherDate = new \DateTime($otherDateTime);
+        $interval = $this->dateTime->diff($otherDate);
+        return $interval->format('%r%m');
+    }
+
+    public function differenceInYears($otherDateTime) {
+        $otherDate = new \DateTime($otherDateTime);
+        $interval = $this->dateTime->diff($otherDate);
+        return $interval->format('%r%y');
+    }
+
+    public function differenceInHours($otherDateTime) {
+        $otherDate = new \DateTime($otherDateTime);
+        $interval = $this->dateTime->diff($otherDate);
+        return $interval->format('%r%H');
+    }
+
+    public function differenceInMinutes($otherDateTime) {
+        $otherDate = new \DateTime($otherDateTime);
+        $interval = $this->dateTime->diff($otherDate);
+        return $interval->format('%r%i');
+    }
+
+    public function differenceInSeconds($otherDateTime) {
+        $otherDate = new \DateTime($otherDateTime);
+        $interval = $this->dateTime->diff($otherDate);
+        return $interval->format('%r%S');
+    }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Imadepurnamayasa\PhpImpyCore;
+namespace Imadepurnamayasa\PhpImpyCore\Manager;
 
-class DateTimeManager {
+class DateTime {
     private $dateTime;
 
     public function __construct($dateTimeString = 'now') {

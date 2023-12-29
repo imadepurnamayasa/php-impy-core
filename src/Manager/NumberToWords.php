@@ -2,10 +2,12 @@
 
 namespace Imadepurnamayasa\PhpImpyCore\Manager;
 
-class NumberToWords {
+class NumberToWords
+{
     private $words;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->words = array(
             '0' => 'Zero',
             '1' => 'One',
@@ -38,7 +40,8 @@ class NumberToWords {
         );
     }
 
-    public function convert($number) {
+    public function convert($number)
+    {
         if ($number < 0 || $number > 999999999999999) {
             return 'Number out of range (0 - 999999999999999)';
         }
@@ -93,7 +96,8 @@ class NumberToWords {
         return trim($result);
     }
 
-    private function convertGroup($number) {
+    private function convertGroup($number)
+    {
         $result = '';
 
         // Tens and ones

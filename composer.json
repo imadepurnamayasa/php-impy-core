@@ -1,16 +1,16 @@
 {
     "name": "imadepurnamayasa/php-impy-core",
-    "description": "PHP IMPY Core",
-    "autoload": {
-        "psr-4": {
-            "Imadepurnamayasa\\PhpImpyCore\\": "src/"
-        }
-    },
+    "description": "PHP IMPY Core",    
     "authors": [
         {
             "name": "I Made Purnama Yasa",
             "email": "imade.purnamayasa@gmail.com"
         }
     ],
+	"autoload": {
+        "psr-4": {
+            "Imadepurnamayasa\\PhpImpyCore\\": "src/"
+        }
+    },
     "require": {}
 }

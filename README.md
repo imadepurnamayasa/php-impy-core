@@ -1,3 +1,3 @@
-# php-impy-core
+# php-inti
  
-My PHP Core system
+Script PHP untuk inti sistem yang saya buat

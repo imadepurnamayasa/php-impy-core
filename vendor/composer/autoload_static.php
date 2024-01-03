@@ -9,12 +9,12 @@ class ComposerStaticInitc0af00a9381b6cde801ffabd61615b35
     public static $prefixLengthsPsr4 = array (
         'I' => 
         array (
-            'Imadepurnamayasa\\PhpImpyCore\\' => 29,
+            'Imadepurnamayasa\\PhpInti\\' => 25,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Imadepurnamayasa\\PhpImpyCore\\' => 
+        'Imadepurnamayasa\\PhpInti\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

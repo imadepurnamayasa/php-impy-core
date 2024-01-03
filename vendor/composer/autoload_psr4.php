@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Imadepurnamayasa\\PhpImpyCore\\' => array($baseDir . '/src'),
+    'Imadepurnamayasa\\PhpInti\\' => array($baseDir . '/src'),
 );

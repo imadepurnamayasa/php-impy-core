@@ -2,7 +2,7 @@
 
 namespace Imadepurnamayasa\PhpInti\Crud;
 
-class Data
+class Form
 {
     
 }

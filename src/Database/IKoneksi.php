@@ -2,7 +2,7 @@
 
 namespace Imadepurnamayasa\PhpInti\Database;
 
-class PdoKu
+class IKoneksi
 {
     
 }

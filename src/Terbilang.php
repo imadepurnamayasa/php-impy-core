@@ -83,7 +83,7 @@ class Terbilang
             $angka %= 100;
         }
 
-        // Tens and ones
+        // Sepuluh dan nol
         if ($angka > 0) {
             if ($angka < 20) {
                 $hasil .= $this->kata[$angka];
@@ -92,7 +92,6 @@ class Terbilang
             }
         }
 
-        // Remove trailing space and return the result
         return trim($hasil);
     }
 
@@ -100,7 +99,7 @@ class Terbilang
     {
         $hasil = '';
 
-        // Tens and ones
+        // Sepuluh dan nol
         if ($angka > 0) {
             if ($angka < 20) {
                 $hasil .= $this->kata[$angka];

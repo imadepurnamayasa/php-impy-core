@@ -15,6 +15,7 @@
         }
     },
     "require": {
-		"php": ">=5.6.0"
+		"php": ">=8.0.0",
+        "dotenv-org/phpdotenv-vault": "dev-master"
 	}
 }

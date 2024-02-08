@@ -29,14 +29,14 @@ $columnTypes = [
 
 $action->table($table);
 $action->columnTypes($columnTypes);
-echo $action->process();
+echo $action->process('insert');
 
 $form->table($table);
 $form->columnTypes($columnTypes);
-$form->process();
+echo $form->process();
 
 $data->table($table);
 $data->columnTypes($columnTypes);
-$data->process();
+echo $data->process();
 
 $pdo->close();

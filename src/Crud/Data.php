@@ -9,6 +9,8 @@ class Data implements Icrud
 {
     protected IConnection $connection;
     protected string $table = '';
+    protected array $primaryKeys = [];
+    protected array $columnTypes = [];
     protected array $hideColumns = [];
 
     public function __construct(IConnection $connection)
@@ -23,12 +25,12 @@ class Data implements Icrud
 
     public function primaryKeys(array $columns)
     {
-        
+        $this->primaryKeys = $columns;
     }
 
     public function columnTypes(array $columns) 
     {
-        
+        $this->columnTypes = $columns;
     }
 
     public function hideColumns(array $columns)
@@ -62,46 +64,49 @@ class Data implements Icrud
             $meta[] = $stmt->getColumnMeta($column_index);
         }
 
-        echo '<pre>';
-        print_r($meta);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($meta);
+        // echo '</pre>';
 
         $no = $offset + 1;
-        echo '<button>Create</button>';
-        echo '<table border="1">';
+        $html = '';
+        $html .= '<button>Create</button>';
+        $html .= '<table border="1">';
 
-        echo '<tr>';
-        echo '<th>Aksi</th>';
-        echo '<th>#</th>';
+        $html .= '<tr>';
+        $html .= '<th>Aksi</th>';
+        $html .= '<th>#</th>';
         foreach ($meta as $row) {
             if (!in_array($row['name'], $this->hideColumns)) {
-                echo '<th>' . $row['name'] . '</th>';
+                $html .= '<th>' . $row['name'] . '</th>';
             }
         }
-        echo '</tr>';
+        $html .= '</tr>';
 
         while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-            echo '<tr valign="top">';
-            echo '<td>';
-            echo '<select>';
-            echo '<option>-PILIH-</option>';
-            echo '<option>Baca</option>';
-            echo '<option>Cetak</option>';
-            echo '<option>Ubah</option>';
-            echo '<option>Hapus</option>';
-            echo '</select>';
-            echo '</td>';
-            echo '<td>' . $no++ . '</td>';
+            $html .= '<tr valign="top">';
+            $html .= '<td>';
+            $html .= '<select>';
+            $html .= '<option>-PILIH-</option>';
+            $html .= '<option>Baca</option>';
+            $html .= '<option>Cetak</option>';
+            $html .= '<option>Ubah</option>';
+            $html .= '<option>Hapus</option>';
+            $html .= '</select>';
+            $html .= '</td>';
+            $html .= '<td>' . $no++ . '</td>';
             foreach ($row as $column_index => $column_value) {
                 if (!in_array($meta[$column_index]['name'], $this->hideColumns)) {
-                    echo '<td>' . $column_value . '</td>';
+                    $html .= '<td>' . $column_value . '</td>';
                 }
             }
-            echo '</tr>';
+            $html .= '</tr>';
         }
 
-        echo '</table>';
+        $html .= '</table>';
 
-        echo $pagination->generatePaginationHTML();
+        $html .= $pagination->generatePaginationHTML();
+
+        return $html;
     }
 }

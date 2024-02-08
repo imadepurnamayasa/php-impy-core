@@ -6,10 +6,11 @@ use DateTime;
 use Exception;
 use Imadepurnamayasa\PhpInti\Database\IConnection;
 
-class Action implements Icrud
+class Action implements Icrud, IcrudAction
 {
     protected IConnection $connection;
     protected string $table = '';
+    protected array $primaryKeys = [];
     protected array $columnTypes = [];
     protected array $hideColumns = [];
 
@@ -25,7 +26,7 @@ class Action implements Icrud
 
     public function primaryKeys(array $columns)
     {
-        
+        $this->primaryKeys = $columns;
     }
 
     public function columnTypes(array $columns)
@@ -38,14 +39,22 @@ class Action implements Icrud
         $this->hideColumns = $columns;
     }
 
-    public function process(string $action)
+    public function process(string $action = '')
     {
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';        
+        // echo '<pre>';
+        // print_r($_POST);
+        // echo '</pre>'; 
+        
+        if ($action === 'insert') {
+            return $this->insert();
+        } else if ($action === 'update') {
+            return $this->update();
+        } else if ($action === 'delete') {
+            return $this->delete();
+        }
     }
 
-    protected function insert()
+    public function insert()
     {
         if (!isset($_POST['crud_form'])) {
             return 'error';
@@ -86,5 +95,15 @@ class Action implements Icrud
                 'messages' => $e->getMessage()
             ]);
         }
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function delete()
+    {
+
     }
 }

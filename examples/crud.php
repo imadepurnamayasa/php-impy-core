@@ -14,9 +14,7 @@ $form = new Form($pdo);
 $data = new Data($pdo);
 $action = new Action($pdo);
 
-// echo 'open = ' . $pdo->open('localhost', 3306, 'root', 'root', 'test');
-// echo '<br>';
-echo 'openEnv = ' . $pdo->openEnv(__DIR__);
+echo 'open = ' . $pdo->open('localhost', 3306, 'root', 'root', 'test');
 echo '<br>';
 echo 'koneksi = ';
 print_r($pdo->connection());

@@ -7,7 +7,6 @@ use PDO;
 interface IConnection
 {
     public function open(string $host, int $port, string $username, string $password, string $database);
-    public function openEnv(string $envdir);
     public function close();
     public function connection(): PDO;
 }

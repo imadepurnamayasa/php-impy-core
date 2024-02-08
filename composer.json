@@ -8,7 +8,7 @@
         }
     ],
 	"license": "MIT",
-	"minimum-stability": "stable",
+	"minimum-stability": "dev",
 	"autoload": {
         "psr-4": {
             "Imadepurnamayasa\\PhpInti\\": "src/"
@@ -16,7 +16,6 @@
     },
     "require": {
 		"php": "^8.0",
-        "dotenv-org/phpdotenv-vault": "dev-master",
         "firebase/php-jwt": "dev-main"
 	}
 }

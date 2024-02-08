@@ -2,16 +2,14 @@
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-class Form extends AbstractComponent
+class Hr extends AbstractComponent
 {
     public function render(): string
     {
-        $html = '<form ';
+        $html = '<hr ';        
         $html .= $this->renderAttributes();
         $html .= '>';
-        $html .= $this->renderComponents();
-        $html .= '</form>';
-
+        
         return $html;
     }
 }

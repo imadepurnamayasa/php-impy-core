@@ -15,6 +15,8 @@ abstract class AbstractComponent implements InterfaceComponent
     public function addAttribute(string $name, string $value)
     {
         $this->attributes[$name] = $value;
+
+        return $this;
     }
 
     public function removeAttribute(string $name)
@@ -22,6 +24,8 @@ abstract class AbstractComponent implements InterfaceComponent
         if (isset($this->attributes[$name])) {
             unset($this->attributes[$name]);
         }
+
+        return $this;
     }
 
     public function getAttribute(string $name)
@@ -37,6 +41,8 @@ abstract class AbstractComponent implements InterfaceComponent
     public function addComponent(string $name, AbstractComponent $component)
     {
         $this->components[$name] = $component;
+
+        return $this;
     }
 
     public function removeComponent(string $name)
@@ -44,6 +50,8 @@ abstract class AbstractComponent implements InterfaceComponent
         if (isset($this->components[$name])) {
             unset($this->components[$name]);
         }
+
+        return $this;
     }
 
     public function getComponent(string $name)

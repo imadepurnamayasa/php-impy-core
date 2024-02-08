@@ -1,13 +1,20 @@
 <?php
 
+use Imadepurnamayasa\PhpInti\Html\Body;
 use Imadepurnamayasa\PhpInti\Html\Button;
 use Imadepurnamayasa\PhpInti\Html\Form;
 use Imadepurnamayasa\PhpInti\Html\Hr;
+use Imadepurnamayasa\PhpInti\Html\Html;
 use Imadepurnamayasa\PhpInti\Html\Input;
+use Imadepurnamayasa\PhpInti\Html\P;
+use Imadepurnamayasa\PhpInti\Html\Title;
 
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+
+$p1 = new P('Please insert your username and password');
+$p1->setId('p1');
 
 $username = new Input('text');
 $username->setId('username');
@@ -28,10 +35,18 @@ $save->setId('save');
 $save->addAttribute('class', 'button');
 
 $form = new Form();
-echo $form
+$form
+    ->addElement($p1)
     ->addElement($username)
     ->addElement($hr1)
     ->addElement($password)
     ->addElement($hr2)
-    ->addElement($save)
-    ->render();
+    ->addElement($save);
+
+$title = new Title('Form Login');
+
+$body = new Body();
+$body->addElement($form);
+
+$html = new Html();
+echo $html->addElement($body)->render();

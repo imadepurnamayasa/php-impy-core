@@ -38,12 +38,15 @@ class Action implements Icrud
         $this->hideColumns = $columns;
     }
 
-    public function process()
+    public function process(string $action)
     {
         echo '<pre>';
         print_r($_POST);
-        echo '</pre>';
+        echo '</pre>';        
+    }
 
+    protected function insert()
+    {
         if (!isset($_POST['crud_form'])) {
             return 'error';
         }

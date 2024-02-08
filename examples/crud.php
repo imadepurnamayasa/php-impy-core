@@ -23,17 +23,20 @@ print_r($pdo->connection());
 echo '<br>';
 
 $table = 'crud';
+$columnTypes = [
+    'dt' => 'DATETIME'
+];
 
 $action->table($table);
-$action->columnTypes([
-    'dt' => 'DATETIME'
-]);
+$action->columnTypes($columnTypes);
 echo $action->process();
 
 $form->table($table);
+$form->columnTypes($columnTypes);
 $form->process();
 
 $data->table($table);
+$data->columnTypes($columnTypes);
 $data->process();
 
 $pdo->close();

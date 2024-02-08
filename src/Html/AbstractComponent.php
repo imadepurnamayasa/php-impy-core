@@ -68,7 +68,7 @@ abstract class AbstractComponent implements InterfaceComponent
     public function renderComponents(): string 
     {
         $output = '';
-        foreach ($this->attributes as $component) {
+        foreach ($this->components as $component) {
             $output .= $component->render();
         }
         return $output;

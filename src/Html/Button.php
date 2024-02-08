@@ -13,12 +13,12 @@ class Button extends AbstractComponent
 
     public function render(): string
     {
-        $button = '<button ';
+        $html = '<button ';        
+        $html .= $this->renderAttributes();
+        $html .= '>';
+        $html .= $this->text;
+        $html .= '</button>';
         
-        $button .= $this->renderAttributes();
-
-        $button .= '>' . $this->text . '</button>';
-
-        return $button;
+        return $html;
     }
 }

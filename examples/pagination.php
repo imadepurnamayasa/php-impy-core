@@ -1,11 +1,15 @@
 <?php
 
-use Imadepurnamayasa\PhpInti\Pagination;
+use Imadepurnamayasa\PhpInti\Crud\Pagination;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$pagination = new Pagination(100, 5, 'pagination.php?page=');
+$total = 100;
+$limit = 5;
+
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+
+$pagination = new Pagination($total, $limit, 'pagination.php?page=');
 $pagination->setCurrentPage($page);
-$totalPages = $pagination->getTotalPages();
+
 echo $pagination->generatePaginationHTML();

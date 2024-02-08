@@ -1,6 +1,6 @@
 <?php
 
-namespace Imadepurnamayasa\PhpInti;
+namespace Imadepurnamayasa\PhpInti\Crud;
 
 class Pagination
 {

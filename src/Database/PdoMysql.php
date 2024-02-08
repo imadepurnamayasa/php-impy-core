@@ -6,12 +6,12 @@ use DotenvVault\DotenvVault;
 use PDO;
 use PDOException;
 
-class PdoMysql implements IKoneksi
+class PdoMysql implements IConnection
 {
 
     protected $conn;
 
-    public function buka($host, $port, $username, $password, $dbname)
+    public function open(string $host, int $port, string $username, string $password, string $dbname)
     {
         try {
             $this->conn = new PDO("mysql:host=$host:$port;dbname=$dbname", $username, $password);
@@ -24,7 +24,7 @@ class PdoMysql implements IKoneksi
         }        
     }
 
-    public function bukaEnv($envdir)
+    public function openEnv(string $envdir)
     {
         $dotenv = DotenvVault::createImmutable($envdir);
         $dotenv->safeLoad();
@@ -46,11 +46,12 @@ class PdoMysql implements IKoneksi
         }
     }
 
-    public function tutup()
+    public function close()
     {
+        $this->conn = null;
     }
 
-    public function koneksi(): PDO
+    public function connection(): PDO
     {
         return $this->conn;
     }

@@ -29,7 +29,7 @@ class Form implements Icrud
         $this->primaryKeys = $columns;
     }
 
-    public function columnTypes(array $columns) 
+    public function columnTypes(array $columns)
     {
         $this->columnTypes = $columns;
     }
@@ -39,9 +39,37 @@ class Form implements Icrud
         $this->hideColumns = $columns;
     }
 
-    public function process()
+    public function process(string $action = '')
     {
-        $stmt = $this->connection->connection()->prepare("SELECT * FROM $this->table");
+        $get = $_GET;
+
+        $whereClause = '';
+        $whereValues = [];
+
+        foreach ($get as $key => $value) {
+            if (in_array($key, $this->primaryKeys)) {
+                $whereClause .= "$key = :$key AND ";
+                $whereValues[$key] = $value;
+            }
+        }        
+
+        if (empty($whereClause)) {
+            foreach ($this->primaryKeys as $key) {
+                $whereClause .= "$key = :$key AND ";
+                $whereValues[$key] = '';
+            }
+        }
+
+        $whereClause = rtrim($whereClause, 'AND ');
+
+        $sql = "SELECT * FROM $this->table WHERE $whereClause LIMIT 1";
+
+        $stmt = $this->connection->connection()->prepare($sql);
+
+        foreach ($whereValues as $key => $value) {
+            $stmt->bindValue(":$key", $value);
+        }
+
         $stmt->execute();
 
         $meta = [];
@@ -54,22 +82,25 @@ class Form implements Icrud
         $html .= '<form action="" method="post">';
         $html .= '<table>';
 
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
         foreach ($meta as $row) {
+            $value = isset($data[$row['name']]) ? $data[$row['name']] : '';
             if (!in_array($row['name'], $this->hideColumns)) {
                 $html .= '<tr>';
                 $html .= '<td>' . $row['name'] . '</td>';
                 $html .= '<td>:</td>';
                 $html .= '<td>';
                 if ($row['pdo_type'] === PDO::PARAM_INT) {
-                    $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="" size="50">';
+                    $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="' . $value . '" size="50">';
                 } else if ($row['pdo_type'] === PDO::PARAM_STR) {
                     if ($row['native_type'] === 'DATETIME') {
                         $currentDateTime = new DateTime();
                         $currentDateTimeString = $currentDateTime->format('d-m-Y H:i:s');
-                        $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="'.$currentDateTimeString.'" size="50">';
+                        $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="' . $currentDateTimeString . '" size="50">';
                     } else {
-                        $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="" size="50">';
-                    }                    
+                        $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="' . $value . '" size="50">';
+                    }
                 }
                 $html .= '</td>';
                 $html .= '</tr>';

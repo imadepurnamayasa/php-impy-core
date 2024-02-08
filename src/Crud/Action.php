@@ -51,16 +51,28 @@ class Action implements Icrud, IcrudAction
             return $this->update();
         } else if ($action === 'delete') {
             return $this->delete();
+        } else {
+            return json_encode([
+                'messages' => 'Action not available.'
+            ]);
         }
     }
 
     public function insert()
     {
         if (!isset($_POST['crud_form'])) {
-            return 'error';
+            return json_encode([
+                'messages' => "Form data no available."
+            ]);
         }
 
         $data = $_POST['crud_form'];
+
+        foreach ($data as $key => $value) {
+            if (in_array($key, $this->primaryKeys)) {
+                unset($data[$key]);
+            }
+        }
 
         $sql = "INSERT INTO $this->table (";
         $sql .= implode(", ", array_keys($data));

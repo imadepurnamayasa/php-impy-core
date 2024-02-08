@@ -23,19 +23,25 @@ print_r($pdo->connection());
 echo '<br>';
 
 $table = 'crud';
+$primaryKeys = [
+    'id'
+];
 $columnTypes = [
     'dt' => 'DATETIME'
 ];
 
 $action->table($table);
+$action->primaryKeys($primaryKeys);
 $action->columnTypes($columnTypes);
 echo $action->process('insert');
 
 $form->table($table);
+$form->primaryKeys($primaryKeys);
 $form->columnTypes($columnTypes);
 echo $form->process();
 
 $data->table($table);
+$data->primaryKeys($primaryKeys);
 $data->columnTypes($columnTypes);
 echo $data->process();
 

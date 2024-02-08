@@ -28,7 +28,7 @@ class Data implements Icrud
         $this->primaryKeys = $columns;
     }
 
-    public function columnTypes(array $columns) 
+    public function columnTypes(array $columns)
     {
         $this->columnTypes = $columns;
     }
@@ -84,14 +84,20 @@ class Data implements Icrud
         $html .= '</tr>';
 
         while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+            $urlParameter = 'crud.php?';
+            foreach ($row as $column_index => $column_value) {
+                if (in_array($meta[$column_index]['name'], $this->primaryKeys)) {
+                    $urlParameter .= $meta[$column_index]['name'] . '=' . $column_value.'&';
+                }
+            }
             $html .= '<tr valign="top">';
             $html .= '<td>';
-            $html .= '<select>';
+            $html .= '<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">';
             $html .= '<option>-PILIH-</option>';
-            $html .= '<option>Baca</option>';
-            $html .= '<option>Cetak</option>';
-            $html .= '<option>Ubah</option>';
-            $html .= '<option>Hapus</option>';
+            $html .= '<option value="' . $urlParameter . 'action=read">Read</option>';
+            $html .= '<option value="' . $urlParameter . 'action=print">Print</option>';
+            $html .= '<option value="' . $urlParameter . 'action=edit">Edit</option>';
+            $html .= '<option value="' . $urlParameter . 'action=delete">Delete</option>';
             $html .= '</select>';
             $html .= '</td>';
             $html .= '<td>' . $no++ . '</td>';

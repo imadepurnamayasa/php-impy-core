@@ -41,10 +41,6 @@ class Action implements Icrud, IcrudAction
 
     public function process(string $action = '')
     {
-        // echo '<pre>';
-        // print_r($_POST);
-        // echo '</pre>'; 
-        
         if ($action === 'insert') {
             return $this->insert();
         } else if ($action === 'update') {

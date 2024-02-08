@@ -3,7 +3,7 @@
         'name' => 'imadepurnamayasa/php-inti',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'be256fec04858a1e7e4dfe700872b6e214dbe780',
+        'reference' => '647f53d0fc25551a3ad83b607394463aaa7cb4ae',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -21,6 +21,17 @@
             ),
             'dev_requirement' => false,
         ),
+        'firebase/php-jwt' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '1b9e87184745595ef70540613c0cb9de09bebab3',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../firebase/php-jwt',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'graham-campbell/result-type' => array(
             'pretty_version' => '1.1.x-dev',
             'version' => '1.1.9999999.9999999-dev',
@@ -33,7 +44,7 @@
         'imadepurnamayasa/php-inti' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'be256fec04858a1e7e4dfe700872b6e214dbe780',
+            'reference' => '647f53d0fc25551a3ad83b607394463aaa7cb4ae',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

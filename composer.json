@@ -16,6 +16,7 @@
     },
     "require": {
 		"php": ">=8.0.0",
-        "dotenv-org/phpdotenv-vault": "dev-master"
+        "dotenv-org/phpdotenv-vault": "dev-master",
+        "firebase/php-jwt": "dev-main"
 	}
 }

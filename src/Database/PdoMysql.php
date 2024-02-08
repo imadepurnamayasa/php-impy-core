@@ -5,7 +5,7 @@ namespace Imadepurnamayasa\PhpInti\Database;
 use PDO;
 use PDOException;
 
-class PdoMysql implements IConnection
+class PdoMysql implements Connection
 {
 
     protected $conn;

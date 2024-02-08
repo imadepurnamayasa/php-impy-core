@@ -2,42 +2,10 @@
 
 namespace Imadepurnamayasa\PhpInti\Crud;
 
-use Imadepurnamayasa\PhpInti\Database\IConnection;
 use PDO;
 
-class Data implements Icrud
+class Data extends Crud
 {
-    protected IConnection $connection;
-    protected string $table = '';
-    protected array $primaryKeys = [];
-    protected array $columnTypes = [];
-    protected array $hideColumns = [];
-
-    public function __construct(IConnection $connection)
-    {
-        $this->connection = $connection;
-    }
-
-    public function table(string $table)
-    {
-        $this->table = $table;
-    }
-
-    public function primaryKeys(array $columns)
-    {
-        $this->primaryKeys = $columns;
-    }
-
-    public function columnTypes(array $columns)
-    {
-        $this->columnTypes = $columns;
-    }
-
-    public function hideColumns(array $columns)
-    {
-        $this->hideColumns = $columns;
-    }
-
     public function process(string $parameter = 'page', int $limit = 10)
     {
 

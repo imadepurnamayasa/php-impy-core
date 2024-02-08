@@ -2,23 +2,18 @@
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-class Button extends AbstractComponent
+class Button extends Element
 {
-    protected $text;
+    private $text;
 
-    public function setText($text)
+    public function __construct($type, $text)
     {
+        parent::__construct('button');
+        $this->addAttribute('type', $type);
         $this->text = $text;
     }
 
-    public function render(): string
-    {
-        $html = '<button ';        
-        $html .= $this->renderAttributes();
-        $html .= '>';
-        $html .= $this->text;
-        $html .= '</button>';
-        
-        return $html;
+    public function getContent() {
+        return $this->text;
     }
 }

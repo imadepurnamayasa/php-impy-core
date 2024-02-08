@@ -5,26 +5,33 @@ use Imadepurnamayasa\PhpInti\Html\Form;
 use Imadepurnamayasa\PhpInti\Html\Hr;
 use Imadepurnamayasa\PhpInti\Html\Input;
 
+ini_set('display_errors', 1);
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$username = new Input();
+$username = new Input('text');
+$username->setId('username');
 $username->addAttribute('placeholder', 'username');
 
-$password = new Input();
+$hr1 = new Hr();
+$hr1->setId('hr1');
+
+$password = new Input('password');
+$password->setId('password');
 $password->addAttribute('placeholder', 'password');
 
-$save = new Button();
-$save->setText('Save');
+$hr2 = new Hr();
+$hr2->setId('hr2');
+
+$save = new Button('button', 'Save');
 $save->setId('save');
 $save->addAttribute('class', 'button');
 
-$hr = new Hr();
-
 $form = new Form();
 echo $form
-    ->addComponent('username', $username)
-    ->addComponent('hr1', $hr)
-    ->addComponent('password', $password)
-    ->addComponent('hr2', $hr)
-    ->addComponent('save', $save)
+    ->addElement($username)
+    ->addElement($hr1)
+    ->addElement($password)
+    ->addElement($hr2)
+    ->addElement($save)
     ->render();

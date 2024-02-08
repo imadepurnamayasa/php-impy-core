@@ -2,14 +2,15 @@
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-class Input extends AbstractComponent
-{
-    public function render(): string
+class Input extends Element
+{    
+    public function __construct($type)
     {
-        $html = '<input ';        
-        $html .= $this->renderAttributes();
-        $html .= '>';
-        
-        return $html;
+        parent::__construct('input');
+        $this->addAttribute('type', $type);
+    }
+
+    public function getContent()
+    {
     }
 }

@@ -2,14 +2,14 @@
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-class Hr extends AbstractComponent
+class Hr extends Element
 {
-    public function render(): string
+    public function __construct()
     {
-        $html = '<hr ';        
-        $html .= $this->renderAttributes();
-        $html .= '>';
-        
-        return $html;
+        parent::__construct('hr');
+    }
+
+    public function getContent()
+    {
     }
 }

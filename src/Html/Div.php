@@ -2,16 +2,14 @@
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-class Div extends AbstractComponent
+class Div extends Element
 {
-    public function render(): string
+    public function __construct()
     {
-        $html = '<div ';        
-        $html .= $this->renderAttributes();
-        $html .= '>';
-        $html .= $this->renderComponents();
-        $html .= '</div>';
-        
-        return $html;
+        parent::__construct('div');
+    }
+
+    public function getContent()
+    {
     }
 }

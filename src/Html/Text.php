@@ -2,11 +2,11 @@
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-class Form extends Element
+class Text extends Element
 {
     public function __construct()
     {
-        parent::__construct('form');
+        parent::__construct('span');
     }
 
     public function getContent()

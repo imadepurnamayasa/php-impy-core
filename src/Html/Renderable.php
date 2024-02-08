@@ -2,7 +2,7 @@
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-interface InterfaceComponent
+interface Renderable
 {
     public function render(): string;
 }

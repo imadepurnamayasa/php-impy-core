@@ -1,12 +1,12 @@
 <?php
 
-use Imadepurnamayasa\PhpInti\Database\Query\Builder;
+use Imadepurnamayasa\PhpInti\Database\QueryBuilder;
 
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$queryBuilder = new Builder();
+$queryBuilder = new QueryBuilder();
 
 $query = $queryBuilder->table('orders')
     ->select('orders.id, orders.order_date, customers.name')
@@ -14,6 +14,7 @@ $query = $queryBuilder->table('orders')
     ->join('LEFT', 'products', 'orders.product_id', '=', 'products.id')
     ->where('orders.total_amount', '>', 1000)
     ->orderBy('orders.order_date', 'DESC')
+    ->groupBy('orders.id')
     ->build();
 
 echo $query;

@@ -1,15 +1,15 @@
 <?php
 
-namespace Imadepurnamayasa\PhpInti\Database\Query;
+namespace Imadepurnamayasa\PhpInti\Database;
 
-class Builder
+class QueryBuilder
 {
     protected $table;
     protected $select = '*';
     protected $join = [];
-    protected $joinCondition = [];
     protected $where = [];
-    protected $orderBy = [];
+    protected $groupBy = [];
+    protected $orderBy = [];    
 
     public function table($table)
     {
@@ -39,6 +39,12 @@ class Builder
         return $this;
     }
 
+    public function groupBy($column)
+    {
+        $this->groupBy[] = compact('column');
+        return $this;
+    }
+
     public function orderBy($column, $direction = 'ASC')
     {
         $this->orderBy[] = compact('column', 'direction');
@@ -63,6 +69,14 @@ class Builder
                 }
                 $query .= "{$condition['column']} {$condition['operator']} '{$condition['value']}'";
             }
+        }        
+
+        if (!empty($this->groupBy)) {
+            $groupClauses = [];
+            foreach ($this->groupBy as $index => $column) {
+                $groupClauses[] = "{$column['column']}";
+            }
+            $query .= " GROUP BY " . implode(', ', $groupClauses);
         }
 
         if (!empty($this->orderBy)) {

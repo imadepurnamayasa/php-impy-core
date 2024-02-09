@@ -4,6 +4,7 @@ namespace Imadepurnamayasa\PhpInti\Crud;
 
 use DateTime;
 use Exception;
+use Imadepurnamayasa\PhpInti\Helpers;
 
 class Action extends Crud
 {
@@ -24,13 +25,15 @@ class Action extends Crud
 
     public function insert()
     {
-        if (!isset($_POST['crud_form'])) {
+        if (!isset($_POST['crudform'])) {
             return json_encode([
                 'messages' => "Form data no available."
             ]);
         }
 
-        $data = $_POST['crud_form'];
+        $data = $_POST['crudform'];
+
+        Helpers::print_r($data);
 
         foreach ($data as $key => $value) {
             if (in_array($key, $this->primaryKeys)) {

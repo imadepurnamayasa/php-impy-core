@@ -2,7 +2,6 @@
 
 namespace Imadepurnamayasa\PhpInti\Crud;
 
-use Imadepurnamayasa\PhpInti\Helpers;
 use PDO;
 
 class Data extends Crud
@@ -39,8 +38,6 @@ class Data extends Crud
         foreach (range(0, $stmt->columnCount() - 1) as $column_index) {
             $meta[] = $stmt->getColumnMeta($column_index);
         }
-
-        // Helpers::print_r($meta);
 
         $grid = new GridManager(0, $stmt->columnCount());
 

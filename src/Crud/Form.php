@@ -2,6 +2,7 @@
 
 namespace Imadepurnamayasa\PhpInti\Crud;
 
+use Imadepurnamayasa\PhpInti\Html\Button;
 use Imadepurnamayasa\PhpInti\Html\Div;
 use Imadepurnamayasa\PhpInti\Html\Form as HtmlForm;
 use Imadepurnamayasa\PhpInti\Html\Input;
@@ -52,6 +53,9 @@ class Form extends Crud
 
         $html = '';
         $form = new HtmlForm();
+        $form->setId('form');
+        $form->addAttribute('action', 'sakila_action.php?action=insert');
+        $form->addAttribute('method', 'post');
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -123,9 +127,17 @@ class Form extends Crud
 
                 $div->addElement($label);
                 $div->addElement($input);
-                $form->addElement($div);
+
+
+
+                $form->addElement($div);                
             }
         }
+
+        $button = new Button('submit', 'Save');
+        $button->setId('btnsave');
+
+        $form->addElement($button);
 
         $html .= $form->render();
 

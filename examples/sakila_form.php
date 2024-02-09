@@ -1,6 +1,6 @@
 <?php
 
-use Imadepurnamayasa\PhpInti\Crud\Data;
+use Imadepurnamayasa\PhpInti\Crud\Form;
 use Imadepurnamayasa\PhpInti\Database\PdoMysql;
 
 ini_set('display_errors', 1);
@@ -10,7 +10,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $pdo = new PdoMysql();
 $pdo->open('localhost', 3306, 'root', 'root', 'sakila');
 
-$data = new Data($pdo);
+$form = new Form($pdo);
 
 $table = 'film';
 $primaryKeys = [
@@ -20,9 +20,9 @@ $columnTypes = [
     'last_update' => 'DATETIME'
 ];
 
-$data->table($table);
-$data->primaryKeys($primaryKeys);
-$data->columnTypes($columnTypes);
-echo $data->process();
+$form->table($table);
+$form->primaryKeys($primaryKeys);
+$form->columnTypes($columnTypes);
+echo $form->process();
 
 $pdo->close();

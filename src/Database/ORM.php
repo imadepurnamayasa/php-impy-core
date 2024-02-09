@@ -20,8 +20,9 @@ abstract class ORM
 
     public function findById($id)
     {
-        $stmt = $this->pdo->getConnection()->prepare("SELECT * FROM {$this->table} WHERE {$this->primaryKey} = ?");
-        $stmt->execute([$id]);
+        $stmt = $this->pdo->getConnection()->prepare("SELECT * FROM {$this->table} WHERE {$this->primaryKey} = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -35,13 +36,16 @@ abstract class ORM
     public function create($data)
     {
         $keys = array_keys($data);
-        $values = array_values($data);
-
         $columns = implode(',', $keys);
-        $placeholders = implode(',', array_fill(0, count($values), '?'));
+        $values = implode(',', array_map(function ($key) {
+            return ":$key";
+        }, $keys));
 
-        $stmt = $this->pdo->getConnection()->prepare("INSERT INTO {$this->table} ($columns) VALUES ($placeholders)");
-        $stmt->execute($values);
+        $stmt = $this->pdo->getConnection()->prepare("INSERT INTO {$this->table} ($columns) VALUES ($values)");
+        foreach ($data as $key => $value) {
+            $stmt->bindValue(":$key", $value);
+        }
+        $stmt->execute();
 
         return $this->pdo->getConnection()->lastInsertId();
     }
@@ -50,20 +54,23 @@ abstract class ORM
     {
         $updates = '';
         foreach ($data as $key => $value) {
-            $updates .= "$key=?,";
+            $updates .= "$key = :$key,";
         }
         $updates = rtrim($updates, ',');
 
-        $stmt = $this->pdo->getConnection()->prepare("UPDATE {$this->table} SET $updates WHERE {$this->primaryKey} = ?");
-        $values = array_values($data);
-        $values[] = $id;
-        return $stmt->execute($values);
+        $stmt = $this->pdo->getConnection()->prepare("UPDATE {$this->table} SET $updates WHERE {$this->primaryKey} = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        foreach ($data as $key => $value) {
+            $stmt->bindValue(":$key", $value);
+        }
+        return $stmt->execute();
     }
 
     public function delete($id)
     {
-        $stmt = $this->pdo->getConnection()->prepare("DELETE FROM {$this->table} WHERE {$this->primaryKey} = ?");
-        return $stmt->execute([$id]);
+        $stmt = $this->pdo->getConnection()->prepare("DELETE FROM {$this->table} WHERE {$this->primaryKey} = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 
     public function where($conditions, $values = [])

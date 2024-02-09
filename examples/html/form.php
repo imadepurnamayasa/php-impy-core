@@ -46,7 +46,9 @@ $form
 $title = new Title('Form Login');
 
 $body = new Body();
+$body->setId('body');
 $body->addElement($form);
 
 $html = new Html();
+$body->setId('html');
 echo $html->addElement($body)->render();

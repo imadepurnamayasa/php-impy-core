@@ -1,11 +1,11 @@
 <?php
 
-ini_set('display_errors', 1);
-
 use Imadepurnamayasa\PhpInti\Crud\Action;
 use Imadepurnamayasa\PhpInti\Crud\Data;
 use Imadepurnamayasa\PhpInti\Crud\Form;
 use Imadepurnamayasa\PhpInti\Database\PdoMysql;
+
+ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

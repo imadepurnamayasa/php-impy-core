@@ -28,7 +28,7 @@ abstract class PDOConnection
         $this->pdo = null;
     }
 
-    public function connection(): PDO
+    public function getConnection(): PDO
     {
         return $this->pdo;
     }

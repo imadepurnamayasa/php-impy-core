@@ -48,7 +48,7 @@ class Action extends Crud
         $sql .= ":" . implode(", :", array_keys($data));
         $sql .= ")";
 
-        $stmt = $this->connection->connection()->prepare($sql);
+        $stmt = $this->connection->getConnection()->prepare($sql);
 
         foreach ($data as $key => $value) {
             if (in_array($key, array_keys($this->columnTypes))) {

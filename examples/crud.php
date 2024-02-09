@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$pdo = new PDOMySQL('localhost', 'test', 'root', 'root1');
+$pdo = new PDOMySQL('localhost', 'test', 'root', 'root');
 $form = new Form($pdo);
 $data = new Data($pdo);
 $action = new Action($pdo);

@@ -8,8 +8,7 @@ ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$pdo = new PdoMysql();
-$pdo->open('localhost', 3306, 'root', 'root', 'sakila');
+$pdo = new PDOMySQL('localhost', 'sakila', 'root', 'root');
 
 $action = new Action($pdo);
 

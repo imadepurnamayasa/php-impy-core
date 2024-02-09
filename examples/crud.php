@@ -1,6 +1,7 @@
 <?php
 
 use Imadepurnamayasa\PhpInti\Crud\Action;
+use Imadepurnamayasa\PhpInti\Crud\Constants;
 use Imadepurnamayasa\PhpInti\Crud\Data;
 use Imadepurnamayasa\PhpInti\Crud\Form;
 use Imadepurnamayasa\PhpInti\Database\PdoMysql;
@@ -25,7 +26,7 @@ $primaryKeys = [
     'id'
 ];
 $columnTypes = [
-    'dt' => 'DATETIME'
+    'dt' => Constants::DATA_TYPE_DATETIME
 ];
 
 $action->table($table);

@@ -5,7 +5,7 @@ namespace Imadepurnamayasa\PhpInti\Crud;
 use Imadepurnamayasa\PhpInti\Database\Connection;
 
 abstract class Crud
-{
+{    
     protected Connection $connection;
     protected string $table = '';
     protected array $primaryKeys = [];

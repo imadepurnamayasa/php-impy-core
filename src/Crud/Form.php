@@ -2,7 +2,6 @@
 
 namespace Imadepurnamayasa\PhpInti\Crud;
 
-use DateTime;
 use Imadepurnamayasa\PhpInti\Html\Div;
 use Imadepurnamayasa\PhpInti\Html\Form as HtmlForm;
 use Imadepurnamayasa\PhpInti\Html\Input;
@@ -100,7 +99,6 @@ class Form extends Crud
                         $input->addAttribute('cols', 50);
                         $input->addAttribute('rows', 10);
                     } else if (in_array($row['native_type'], ['DATETIME', 'TIMESTAMP'])) {
-
                         $input = new Input('datetime-local');
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('name', 'crudform[' . $row['name'] . ']');

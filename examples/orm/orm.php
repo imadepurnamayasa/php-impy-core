@@ -1,6 +1,7 @@
 <?php
 
 use Imadepurnamayasa\PhpInti\Database\PDOMySQL;
+use Imadepurnamayasa\PhpInti\Helpers;
 
 ini_set('display_errors', 1);
 
@@ -13,28 +14,28 @@ $orm = new Test($pdo, 'users');
 
 // Find a user by ID
 $user = $orm->findById(1);
-var_dump($user);
+Helpers::print_r($user);
 
 // Find all users
 $users = $orm->findAll();
-var_dump($users);
+Helpers::print_r($users);
 
 // Create a new user
 $newUserId = $orm->create(['username' => 'john_doe', 'email' => 'john@example.com']);
-var_dump($newUserId);
+Helpers::print_r($newUserId);
 
 // Update user with ID 1
 $updateResult = $orm->update(1, ['username' => 'jane_doe']);
-var_dump($updateResult);
+Helpers::print_r($updateResult);
 
 // Delete user with ID 2
 $deleteResult = $orm->delete(2);
-var_dump($deleteResult);
+Helpers::print_r($deleteResult);
 
 // Find users with specific conditions
 $filteredUsers = $orm->where(['username = ?'], ['john_doe']);
-var_dump($filteredUsers);
+Helpers::print_r($filteredUsers);
 
 // Custom query
 $customQuery = $orm->query("SELECT * FROM users WHERE username LIKE ?", ['%doe%']);
-var_dump($customQuery);
+Helpers::print_r($customQuery);

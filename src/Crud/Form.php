@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imadepurnamayasa\PhpInti\Crud;
 
 use Imadepurnamayasa\PhpInti\Html\Button;
@@ -76,19 +78,19 @@ class Form extends Crud
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
                         $input->addAttribute('value', $value);
-                        $input->addAttribute('min', 0);
+                        $input->addAttribute('min', '0');
                     } else if (in_array($row['native_type'], ['TINYINT'])) {
                         $input = new Input('number');
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
                         $input->addAttribute('value', $value);
-                        $input->addAttribute('min', 0);
+                        $input->addAttribute('min', '0');
                     } else {
                         $input = new Input('number');
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
                         $input->addAttribute('value', $value);
-                        $input->addAttribute('min', 0);
+                        $input->addAttribute('min', '0');
                     }
                 } else if ($row['pdo_type'] === PDO::PARAM_STR) {
                     if (in_array($row['native_type'], ['STRING'])) {
@@ -96,32 +98,32 @@ class Form extends Crud
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
                         $input->addAttribute('value', $value);
-                        $input->addAttribute('size', $row['len'] / 2);
+                        $input->addAttribute('size', '50');
                     } else if (in_array($row['native_type'], ['BLOB'])) {
                         $input = new TextArea($value);
                         $input->setId("input{$row['name']}$rowIndex");
-                        $input->addAttribute('cols', 50);
-                        $input->addAttribute('rows', 10);
+                        $input->addAttribute('cols', '50');
+                        $input->addAttribute('rows', '10');
                     } else if (in_array($row['native_type'], ['DATETIME', 'TIMESTAMP'])) {
                         $input = new Input('datetime-local');
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
                         $input->addAttribute('value', $value);
-                        $input->addAttribute('size', 50);
+                        $input->addAttribute('size', '50');
                     } else if (in_array($row['native_type'], ['NEWDECIMAL'])) {
                         $input = new Input('number');
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
                         $input->addAttribute('value', $value);
-                        $input->addAttribute('min', 0);
-                        $input->addAttribute('step', .01);
-                        $input->addAttribute('size', 50);
+                        $input->addAttribute('min', '0');
+                        $input->addAttribute('step', '.01');
+                        $input->addAttribute('size', '50');
                     } else {
                         $input = new Input('text');
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
                         $input->addAttribute('value', $value);
-                        $input->addAttribute('size', 50);
+                        $input->addAttribute('size', '50');
                     }
                 }
 

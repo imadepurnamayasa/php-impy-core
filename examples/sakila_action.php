@@ -1,6 +1,7 @@
 <?php
 
 use Imadepurnamayasa\PhpInti\Crud\Action;
+use Imadepurnamayasa\PhpInti\Crud\Constants;
 use Imadepurnamayasa\PhpInti\Database\PdoMysql;
 
 ini_set('display_errors', 1);
@@ -17,7 +18,7 @@ $primaryKeys = [
     'film_id'
 ];
 $columnTypes = [
-    'last_update' => 'DATETIME'
+    'last_update' => Constants::DATA_TYPE_DATETIME
 ];
 
 $action->table($table);

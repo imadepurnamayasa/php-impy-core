@@ -6,11 +6,11 @@ use Imadepurnamayasa\PhpInti\Helpers;
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
-require_once __DIR__ . '/Test.php';
+require_once __DIR__ . '/User.php';
 
 // Example usage
 $pdo = new PDOMySQL('localhost', 'test', 'root', 'root');
-$orm = new Test($pdo, 'users');
+$orm = new User($pdo, 'users');
 
 // Find a user by ID
 $user = $orm->findById(1);

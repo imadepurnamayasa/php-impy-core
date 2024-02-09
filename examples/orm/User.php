@@ -2,7 +2,8 @@
 
 use Imadepurnamayasa\PhpInti\Database\ORM;
 
-class Test extends ORM
+class User extends ORM
 {
     protected $table = 'users';
+    protected $primaryKey = 'id';
 }

@@ -11,12 +11,11 @@ abstract class ORM
 {
     protected $pdo;
     protected $table;
-    protected $primaryKey = 'id';
+    protected $primaryKey;
 
-    public function __construct(PDOConnection $pdo, string $table)
+    public function __construct(PDOConnection $pdo)
     {
         $this->pdo = $pdo;
-        $this->table = $table;
     }
 
     public function findById($id)

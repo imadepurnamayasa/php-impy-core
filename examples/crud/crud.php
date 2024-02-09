@@ -8,7 +8,7 @@ use Imadepurnamayasa\PhpInti\Database\PDOMySQL;
 
 ini_set('display_errors', 1);
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 $pdo = new PDOMySQL('localhost', 'test', 'root', 'root');
 $form = new Form($pdo);

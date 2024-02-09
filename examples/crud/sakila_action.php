@@ -6,7 +6,7 @@ use Imadepurnamayasa\PhpInti\Database\PdoMysql;
 
 ini_set('display_errors', 1);
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 $pdo = new PDOMySQL('localhost', 'sakila', 'root', 'root');
 

@@ -2,19 +2,20 @@
 
 namespace Imadepurnamayasa\PhpInti\Crud;
 
-use Imadepurnamayasa\PhpInti\Database\Connection;
+use Imadepurnamayasa\PhpInti\Database\PDOConnection;
+use PDO;
 
 abstract class Crud
 {    
-    protected Connection $connection;
+    protected PDOConnection $connection;
     protected string $table = '';
     protected array $primaryKeys = [];
     protected array $columnTypes = [];
     protected array $hideColumns = [];
 
-    public function __construct(Connection $connection)
+    public function __construct(PDOConnection $connection)
     {
-        $this->connection = $connection;
+        $this->connection = $connection;      
     }
 
     public function table(string $table)

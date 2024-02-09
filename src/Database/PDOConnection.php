@@ -16,7 +16,6 @@ abstract class PDOConnection
         try {
             $this->pdo = new PDO($dsn, $username, $password, $options);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $this->pdo;
         } catch (PDOException $e) {
             return json_encode([
                 'messages' => $e->getMessage()
@@ -27,5 +26,10 @@ abstract class PDOConnection
     public function close()
     {
         $this->pdo = null;
+    }
+
+    public function connection(): PDO
+    {
+        return $this->pdo;
     }
 }

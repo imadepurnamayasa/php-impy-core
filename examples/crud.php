@@ -4,22 +4,16 @@ use Imadepurnamayasa\PhpInti\Crud\Action;
 use Imadepurnamayasa\PhpInti\Crud\Constants;
 use Imadepurnamayasa\PhpInti\Crud\Data;
 use Imadepurnamayasa\PhpInti\Crud\Form;
-use Imadepurnamayasa\PhpInti\Database\PdoMysql;
+use Imadepurnamayasa\PhpInti\Database\PDOMySQL;
 
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$pdo = new PdoMysql();
+$pdo = new PDOMySQL('localhost', 'test', 'root', 'root1');
 $form = new Form($pdo);
 $data = new Data($pdo);
 $action = new Action($pdo);
-
-echo 'open = ' . $pdo->open('localhost', 3306, 'root', 'root', 'test');
-echo '<br>';
-echo 'koneksi = ';
-print_r($pdo->connection());
-echo '<br>';
 
 $table = 'crud';
 $primaryKeys = [

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Database;
 
-class PdoMysql extends PDOConnection
+class PDOMySQL extends PDOConnection
 {
     public function __construct($host, $dbname, $username, $password, $options = [])
     {

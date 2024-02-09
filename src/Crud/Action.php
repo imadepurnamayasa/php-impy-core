@@ -5,6 +5,7 @@ namespace Imadepurnamayasa\PhpInti\Crud;
 use DateTime;
 use Exception;
 use Imadepurnamayasa\PhpInti\Helpers;
+use PDO;
 
 class Action extends Crud
 {

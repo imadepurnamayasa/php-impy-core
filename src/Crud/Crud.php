@@ -7,15 +7,15 @@ use PDO;
 
 abstract class Crud
 {    
-    protected PDOConnection $connection;
+    protected PDOConnection $pdo;
     protected string $table = '';
     protected array $primaryKeys = [];
     protected array $columnTypes = [];
     protected array $hideColumns = [];
 
-    public function __construct(PDOConnection $connection)
+    public function __construct(PDOConnection $pdo)
     {
-        $this->connection = $connection;      
+        $this->pdo = $pdo;      
     }
 
     public function table(string $table)

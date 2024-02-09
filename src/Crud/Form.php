@@ -37,7 +37,7 @@ class Form extends Crud
 
         $sql = "SELECT * FROM $this->table WHERE $whereClause LIMIT 1";
 
-        $stmt = $this->connection->getConnection()->prepare($sql);
+        $stmt = $this->pdo->getConnection()->prepare($sql);
 
         foreach ($whereValues as $key => $value) {
             $stmt->bindValue(":$key", $value);

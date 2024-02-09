@@ -18,7 +18,7 @@ class Data extends Crud
 
         $page = isset($_GET[$parameter]) && is_numeric($_GET[$parameter]) ? $_GET[$parameter] : 0;
 
-        $stmt = $this->connection->getConnection()->prepare("SELECT count(*) FROM $this->table");
+        $stmt = $this->pdo->getConnection()->prepare("SELECT count(*) FROM $this->table");
         $stmt->execute();
         $totalRow = $stmt->fetchColumn(0);
         $pagination = new Pagination($totalRow, $limit, "$url?$parameter=");
@@ -30,7 +30,7 @@ class Data extends Crud
             $offset = $page * $limit;
         }
 
-        $stmt = $this->connection->getConnection()->prepare("SELECT * FROM $this->table LIMIT $limit OFFSET $offset");
+        $stmt = $this->pdo->getConnection()->prepare("SELECT * FROM $this->table LIMIT $limit OFFSET $offset");
         $stmt->execute();
 
         $meta = [];

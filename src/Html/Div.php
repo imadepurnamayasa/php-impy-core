@@ -1,15 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imadepurnamayasa\PhpInti\Html;
 
 class Div extends Element
 {
-    public function __construct()
+    private $content;
+
+    public function __construct(string $content)
     {
         parent::__construct('div');
+        $this->content = $content;
     }
 
-    public function getContent()
+    public function getContent(): string
     {
+        return $this->content;
     }
 }

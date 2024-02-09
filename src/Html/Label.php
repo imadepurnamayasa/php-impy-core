@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-class P extends Element
+class Label extends Element
 {
     private $content;
 
     public function __construct(string $content)
     {
-        parent::__construct('p');
+        parent::__construct('label');
         $this->content = $content;
     }
 

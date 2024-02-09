@@ -3,6 +3,11 @@
 namespace Imadepurnamayasa\PhpInti\Crud;
 
 use DateTime;
+use Imadepurnamayasa\PhpInti\Html\Div;
+use Imadepurnamayasa\PhpInti\Html\Form as HtmlForm;
+use Imadepurnamayasa\PhpInti\Html\Input;
+use Imadepurnamayasa\PhpInti\Html\Label;
+use Imadepurnamayasa\PhpInti\Html\TextArea;
 use PDO;
 
 class Form extends Crud
@@ -19,7 +24,7 @@ class Form extends Crud
                 $whereClause .= "$key = :$key AND ";
                 $whereValues[$key] = $value;
             }
-        }        
+        }
 
         if (empty($whereClause)) {
             foreach ($this->primaryKeys as $key) {
@@ -47,37 +52,84 @@ class Form extends Crud
         }
 
         $html = '';
-        $html .= '<form action="" method="post">';
-        $html .= '<table>';
+        $form = new HtmlForm();
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        foreach ($meta as $row) {
+        foreach ($meta as $rowIndex => $row) {
             $value = isset($data[$row['name']]) ? $data[$row['name']] : '';
+
             if (!in_array($row['name'], $this->hideColumns)) {
-                $html .= '<tr>';
-                $html .= '<td>' . $row['name'] . '</td>';
-                $html .= '<td>:</td>';
-                $html .= '<td>';
+                $div = new Div('');
+                $div->setId("div{$row['name']}$rowIndex");
+
+                $label = new Label($row['name']);
+                $label->setId("label{$row['name']}$rowIndex");
+                $label->addAttribute('for', "input{$row['name']}$rowIndex");
+
                 if ($row['pdo_type'] === PDO::PARAM_INT) {
-                    $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="' . $value . '" size="50">';
-                } else if ($row['pdo_type'] === PDO::PARAM_STR) {
-                    if ($row['native_type'] === 'DATETIME') {
-                        $currentDateTime = new DateTime();
-                        $currentDateTimeString = $currentDateTime->format('d-m-Y H:i:s');
-                        $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="' . $currentDateTimeString . '" size="50">';
+                    if (in_array($row['native_type'], ['SHORT'])) {
+                        $input = new Input('number');
+                        $input->setId("input{$row['name']}$rowIndex");
+                        $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
+                        $input->addAttribute('value', $value);
+                        $input->addAttribute('min', 0);
+                    } else if (in_array($row['native_type'], ['TINYINT'])) {
+                        $input = new Input('number');
+                        $input->setId("input{$row['name']}$rowIndex");
+                        $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
+                        $input->addAttribute('value', $value);
+                        $input->addAttribute('min', 0);
                     } else {
-                        $html .= '<input type="text" name="crud_form[' . $row['name'] . ']" value="' . $value . '" size="50">';
+                        $input = new Input('number');
+                        $input->setId("input{$row['name']}$rowIndex");
+                        $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
+                        $input->addAttribute('value', $value);
+                        $input->addAttribute('min', 0);
+                    }
+                } else if ($row['pdo_type'] === PDO::PARAM_STR) {
+                    if (in_array($row['native_type'], ['STRING'])) {
+                        $input = new Input('text');
+                        $input->setId("input{$row['name']}$rowIndex");
+                        $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
+                        $input->addAttribute('value', $value);
+                        $input->addAttribute('size', $row['len'] / 2);
+                    } else if (in_array($row['native_type'], ['BLOB'])) {
+                        $input = new TextArea($value);
+                        $input->setId("input{$row['name']}$rowIndex");
+                        $input->addAttribute('cols', 50);
+                        $input->addAttribute('rows', 10);
+                    } else if (in_array($row['native_type'], ['DATETIME', 'TIMESTAMP'])) {
+
+                        $input = new Input('datetime-local');
+                        $input->setId("input{$row['name']}$rowIndex");
+                        $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
+                        $input->addAttribute('value', $value);
+                        $input->addAttribute('size', 50);
+                    } else if (in_array($row['native_type'], ['NEWDECIMAL'])) {
+                        $input = new Input('number');
+                        $input->setId("input{$row['name']}$rowIndex");
+                        $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
+                        $input->addAttribute('value', $value);
+                        $input->addAttribute('min', 0);
+                        $input->addAttribute('step', .01);
+                        $input->addAttribute('size', 50);
+                    } else {
+                        $input = new Input('text');
+                        $input->setId("input{$row['name']}$rowIndex");
+                        $input->addAttribute('name', 'crudform[' . $row['name'] . ']');
+                        $input->addAttribute('value', $value);
+                        $input->addAttribute('size', 50);
                     }
                 }
-                $html .= '</td>';
-                $html .= '</tr>';
+
+                $div->addElement($label);
+                $div->addElement($input);
+                $form->addElement($div);
             }
         }
 
-        $html .= '</table>';
-        $html .= '<button type="submit">Save</button>';
-        $html .= '</form>';
+        $html .= $form->render();
 
         return $html;
     }

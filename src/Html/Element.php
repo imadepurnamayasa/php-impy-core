@@ -143,7 +143,7 @@ abstract class Element implements Renderable
         return $html;
     }
 
-    abstract public function getContent();
+    abstract public function getContent(): string;
 
     protected function isSelfClosing(): bool
     {

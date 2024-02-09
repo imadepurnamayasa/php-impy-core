@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imadepurnamayasa\PhpInti\Html;
 
 class Body extends Element
@@ -9,7 +11,8 @@ class Body extends Element
         parent::__construct('body');
     }
 
-    public function getContent()
+    public function getContent(): string
     {
+        return '';
     }
 }

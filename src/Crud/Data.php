@@ -9,13 +9,20 @@ class Data extends Crud
 {
     public function process(string $parameter = 'page', int $limit = 10)
     {
+        $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+            $url = "https://" . $_SERVER['HTTP_HOST'] . $uri_parts[0];
+        } else {
+            $url = "http://" . $_SERVER['HTTP_HOST'] . $uri_parts[0];
+        }
 
         $page = isset($_GET[$parameter]) && is_numeric($_GET[$parameter]) ? $_GET[$parameter] : 0;
 
         $stmt = $this->connection->connection()->prepare("SELECT count(*) FROM $this->table");
         $stmt->execute();
         $totalRow = $stmt->fetchColumn(0);
-        $pagination = new Pagination($totalRow, $limit, "crud.php?$parameter=");
+        $pagination = new Pagination($totalRow, $limit, "$url?$parameter=");
         $pagination->setCurrentPage($page);
 
         if ($page > 0) {
@@ -33,7 +40,7 @@ class Data extends Crud
             $meta[] = $stmt->getColumnMeta($column_index);
         }
 
-        //Helpers::print_r($meta);
+        // Helpers::print_r($meta);
 
         $grid = new GridManager(0, $stmt->columnCount());
 
@@ -43,12 +50,12 @@ class Data extends Crud
 
         $rowIndex = 0;
 
-        while ($row = $stmt->fetch(PDO::FETCH_NUM)) {   
-            $grid->addRow();                     
+        while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+            $grid->addRow();
             foreach ($row as $columnIndex => $columnValue) {
                 $grid->setCellValue($rowIndex, $columnIndex, $columnValue);
-            }  
-            $rowIndex++;          
+            }
+            $rowIndex++;
         }
 
         $html = '';

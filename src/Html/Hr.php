@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imadepurnamayasa\PhpInti\Html;
 
 class Hr extends Element
@@ -9,7 +11,8 @@ class Hr extends Element
         parent::__construct('hr');
     }
 
-    public function getContent()
+    public function getContent(): string
     {
+        return '';
     }
 }

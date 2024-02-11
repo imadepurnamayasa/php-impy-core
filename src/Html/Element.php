@@ -97,10 +97,10 @@ abstract class Element implements Renderable
 
     public function renderAttributes(): string
     {
-        $html = ' ';
+        $html = '';
 
         foreach ($this->attributes as $name => $value) {
-            $html .= $name . '="' . htmlspecialchars($value) . '" ';
+            $html .= ' ' . $name . '="' . htmlspecialchars($value) . '"';
         }
 
         return rtrim($html);

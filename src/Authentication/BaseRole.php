@@ -8,5 +8,6 @@ use Imadepurnamayasa\PhpInti\Database\ORM;
 
 abstract class BaseRole extends ORM
 {
-    
+    protected $table = 'roles';
+    protected $primariKey = 'id';
 }

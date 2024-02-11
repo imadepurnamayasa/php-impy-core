@@ -143,10 +143,10 @@ abstract class Element implements Renderable
         return $html;
     }
 
-    abstract public function getContent(): string;
-
     protected function isSelfClosing(): bool
     {
         return in_array($this->tag, self::$selfClosingTags);
     }
+
+    abstract public function getContent(): string;
 }

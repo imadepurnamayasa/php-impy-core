@@ -13,8 +13,24 @@ class Helpers
         echo '</pre>';
     }
 
-    public static function hashDefault(string $data): string
+    public static function var_dump($content)
+    {
+        echo '<pre>';
+        var_dump($content);
+        echo '</pre>';
+    }
+
+    public static function passwordHashDefault(string $data): string
     {
         return password_hash($data, PASSWORD_DEFAULT);
+    }
+
+    public static function passwordVerify($password, $hash)
+    {
+        if (password_verify($password, $hash)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

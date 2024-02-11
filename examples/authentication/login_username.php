@@ -12,10 +12,4 @@ require_once __DIR__ . '/User.php';
 $pdo = new PDOMySQL('localhost', 'test', 'root', 'root');
 $user = new User($pdo, 'users');
 
-// Create a new user
-$newUserId = $user->create([
-    'username' => 'johndoe', 
-    'password' => Helpers::passwordHashDefault('johndoe'),
-    'email' => 'johndoe@example.com'
-]);
-Helpers::print_r($newUserId);
+Helpers::var_dump($user->loginByUsername('johndoe', 'johndoe'));

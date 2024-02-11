@@ -1,6 +1,6 @@
 <?php
 
-use Imadepurnamayasa\PhpInti\Auth\JsonAuth;
+use Imadepurnamayasa\PhpInti\Authentication\JsonAuth;
 
 ini_set('display_errors', 1);
 

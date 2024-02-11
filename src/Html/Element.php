@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
-abstract class Element implements Renderable
+abstract class Element
 {
     protected string $tag;
     protected static array $selfClosingTags = [

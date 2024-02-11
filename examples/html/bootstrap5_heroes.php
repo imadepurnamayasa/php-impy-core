@@ -9,20 +9,12 @@ use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertPrimary;
 use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertSecondary;
 use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertSuccess;
 use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertWarning;
+use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Heroes;
 use Imadepurnamayasa\PhpInti\Html\H1;
 
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$html = new Bootstrap('Bootstrap 5 Example');
-$html->getMain()->addElement(new H1('h1', 'Hello, world!'));
-$html->getMain()->addElement(new AlertPrimary('alert1', 'Hello, world!'));
-$html->getMain()->addElement(new AlertSecondary('alert2', 'Hello, world!'));
-$html->getMain()->addElement(new AlertDark('alert3', 'Hello, world!'));
-$html->getMain()->addElement(new AlertLight('alert4', 'Hello, world!'));
-$html->getMain()->addElement(new AlertDanger('alert5', 'Hello, world!'));
-$html->getMain()->addElement(new AlertInfo('alert6', 'Hello, world!'));
-$html->getMain()->addElement(new AlertSuccess('alert7', 'Hello, world!'));
-$html->getMain()->addElement(new AlertWarning('alert8', 'Hello, world!'));
+$html = new Heroes('Bootstrap 5 Heroes', 'Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.');
 echo $html->render();

@@ -62,7 +62,7 @@ class Html5 extends Element
 
     public function getContent(): string
     {
-        return '';
+        return '<!DOCTYPE html>';
     }
 
     public function getHead()

@@ -127,16 +127,20 @@ abstract class Element implements Renderable
 
         if ($this->isSelfClosing()) {
             if (!empty($this->tag)) {
-                $html .= ' />';
+                $html .= ' />' . "\r\n";
             }
         } else {
             if (!empty($this->tag)) {
-                $html .= '>';
+                $html .= '>' . "\r\n";
             }
-            $html .= $this->getContent();
+            if (!empty($this->getContent())) {
+                $html .= $this->getContent() . "\r\n";
+            } else {
+                $html .= $this->getContent();
+            }            
             $html .= $this->renderElements();
             if (!empty($this->tag)) {
-                $html .= '</' . $this->tag . '>';
+                $html .= '</' . $this->tag . '>' . "\r\n";
             }
         }
 

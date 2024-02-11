@@ -6,16 +6,17 @@ namespace Imadepurnamayasa\PhpInti\Html;
 
 class Title extends Element
 {
-    private $text;
+    private $content;
 
-    public function __construct(string $text)
+    public function __construct(string $id, string $content)
     {
         parent::__construct('title');
-        $this->text = $text;
+        $this->setId($id);
+        $this->content = $content;
     }
 
     public function getContent(): string
     {
-        return $this->text;
+        return $this->content;
     }
 }

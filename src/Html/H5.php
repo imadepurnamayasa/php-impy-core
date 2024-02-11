@@ -8,9 +8,10 @@ class H5 extends Element
 {
     private $content;
 
-    public function __construct(string $content)
+    public function __construct(string $id, string $content)
     {
         parent::__construct('h5');
+        $this->setId($id);
         $this->content = $content;
     }
 

@@ -8,9 +8,10 @@ class Text extends Element
 {
     private $content;
 
-    public function __construct(string $content)
+    public function __construct(string $id, string $content)
     {
         parent::__construct('');
+        $this->setId($id);
         $this->content = $content;
     }
 

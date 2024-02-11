@@ -8,9 +8,10 @@ class Label extends Element
 {
     private $content;
 
-    public function __construct(string $content)
+    public function __construct(string $id, string $content)
     {
         parent::__construct('label');
+        $this->setId($id);
         $this->content = $content;
     }
 

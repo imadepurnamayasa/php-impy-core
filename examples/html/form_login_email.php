@@ -13,24 +13,17 @@ ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$p1 = new P('Please insert your email and password');
-$p1->setId('p1');
+$p1 = new P('p1', 'Please insert your email and password');
 
 $email = new Input('text');
 $email->setId('email');
 $email->addAttribute('name', 'email');
 $email->addAttribute('placeholder', 'email');
 
-$hr1 = new Hr();
-$hr1->setId('hr1');
-
 $password = new Input('password');
 $password->setId('password');
 $password->addAttribute('name', 'password');
 $password->addAttribute('placeholder', 'password');
-
-$hr2 = new Hr();
-$hr2->setId('hr2');
 
 $login = new Button('submit', 'Login');
 $login->setId('login');
@@ -41,12 +34,10 @@ $form->addAttribute('method', 'post');
 $form
     ->addElement($p1)
     ->addElement($email)
-    ->addElement($hr1)
+    ->addElement(new Hr('hr1'))
     ->addElement($password)
-    ->addElement($hr2)
+    ->addElement(new Hr('hr2'))
     ->addElement($login);
-
-$title = new Title('Form Login');
 
 $body = new Body();
 $body->setId('body');
@@ -54,4 +45,5 @@ $body->addElement($form);
 
 $html = new Html();
 $html->setId('html');
-echo $html->addElement($body)->render();
+$html->addElement($body);
+echo $html->render();

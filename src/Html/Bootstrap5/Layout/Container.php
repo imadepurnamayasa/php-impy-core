@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Bootstrap5\Layout;
+
+use Imadepurnamayasa\PhpInti\Html\Element;
 
 class Container extends Element
 {

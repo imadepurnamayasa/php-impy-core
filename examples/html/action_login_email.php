@@ -11,12 +11,12 @@ require_once __DIR__ . '/User.php';
 $pdo = new PDOMySQL('localhost', 'test', 'root', 'root');
 $user = new User($pdo, 'users');
 
-$username = 'johndoe';
-$password = 'johndoe';
+$email = isset($_POST['email']) ? $_POST['email'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
 $token = '';
 
-if ($user->loginByUsername($username, $password)) {
-    $token = $user->generateTokenUsername($username);
+if ($user->loginByEmail($email, $password)) {
+    $token = $user->generateTokenEmail($email);
     echo json_encode(array("token" => $token));
 } else {
     echo json_encode(array("error" => "Authentication failed"));
@@ -30,9 +30,9 @@ echo $receivedToken = $token;
 echo '<hr>';
 
 // Check if the token is valid
-$username = $user->validateTokenUsername($receivedToken);
+$username = $user->validateTokenEmail($receivedToken);
 if ($username !== false) {
-    echo "Token is valid for username: $username";
+    echo "Token is valid for email: $email";
 } else {
     echo "Token is not valid";
 }

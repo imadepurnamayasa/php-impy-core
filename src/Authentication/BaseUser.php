@@ -89,9 +89,12 @@ abstract class BaseUser extends ORM
     public function validateTokenUsername($token)
     {
         $tokenParts = explode('.', $token);
-        $header = json_decode(base64_decode($tokenParts[0]), true);
-        $payload = json_decode(base64_decode($tokenParts[1]), true);
-        $signature = $tokenParts[2];
+        $tokenHeader = isset($tokenParts[0]) ? $tokenParts[0] : '';
+        $tokenPaylod = isset($tokenParts[1]) ? $tokenParts[1] : '';
+        $tokenSignature = isset($tokenParts[2]) ? $tokenParts[2] : '';
+        $header = json_decode(base64_decode($tokenHeader), true);
+        $payload = json_decode(base64_decode($tokenPaylod), true);
+        $signature = $tokenSignature;
 
         $base64UrlHeader = base64_encode(json_encode($header));
         $base64UrlPayload = base64_encode(json_encode($payload));
@@ -108,9 +111,12 @@ abstract class BaseUser extends ORM
     public function validateTokenEmail($token)
     {
         $tokenParts = explode('.', $token);
-        $header = json_decode(base64_decode($tokenParts[0]), true);
-        $payload = json_decode(base64_decode($tokenParts[1]), true);
-        $signature = $tokenParts[2];
+        $tokenHeader = isset($tokenParts[0]) ? $tokenParts[0] : '';
+        $tokenPaylod = isset($tokenParts[1]) ? $tokenParts[1] : '';
+        $tokenSignature = isset($tokenParts[2]) ? $tokenParts[2] : '';
+        $header = json_decode(base64_decode($tokenHeader), true);
+        $payload = json_decode(base64_decode($tokenPaylod), true);
+        $signature = $tokenSignature;
 
         $base64UrlHeader = base64_encode(json_encode($header));
         $base64UrlPayload = base64_encode(json_encode($payload));

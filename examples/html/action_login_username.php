@@ -11,8 +11,8 @@ require_once __DIR__ . '/User.php';
 $pdo = new PDOMySQL('localhost', 'test', 'root', 'root');
 $user = new User($pdo, 'users');
 
-$username = 'johndoe';
-$password = 'johndoe';
+$username = isset($_POST['username']) ? $_POST['username'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
 $token = '';
 
 if ($user->loginByUsername($username, $password)) {

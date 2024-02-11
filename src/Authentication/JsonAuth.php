@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Auth;
+namespace Imadepurnamayasa\PhpInti\Authentication;
 
 class JsonAuth
 {

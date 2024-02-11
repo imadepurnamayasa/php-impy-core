@@ -81,10 +81,17 @@ abstract class ORM
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function query($sql, $values = [])
+    public function queryAll($sql, $values = [])
     {
         $stmt = $this->pdo->getConnection()->prepare($sql);
         $stmt->execute($values);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function queryOne($sql, $values = [])
+    {
+        $stmt = $this->pdo->getConnection()->prepare($sql);
+        $stmt->execute($values);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

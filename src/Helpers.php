@@ -12,4 +12,9 @@ class Helpers
         print_r($content);
         echo '</pre>';
     }
+
+    public static function hashDefault(string $data): string
+    {
+        return password_hash($data, PASSWORD_DEFAULT);
+    }
 }

@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Tag;
 
-class Link extends Element
+use Imadepurnamayasa\PhpInti\Html\Element;
+
+class Form extends Element
 {
     public function __construct()
     {
-        parent::__construct('link');
+        parent::__construct('form');
     }
 
     public function getContent(): string

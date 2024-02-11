@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Tag;
 
-class Body extends Element
+use Imadepurnamayasa\PhpInti\Html\Element;
+
+class Main extends Element
 {
     public function __construct()
     {
-        parent::__construct('body');
+        parent::__construct('main');
     }
 
     public function getContent(): string

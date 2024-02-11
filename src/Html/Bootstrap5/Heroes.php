@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Html\Bootstrap5;
 
-use Imadepurnamayasa\PhpInti\Html\Div;
-use Imadepurnamayasa\PhpInti\Html\H1;
-use Imadepurnamayasa\PhpInti\Html\P;
+use Imadepurnamayasa\PhpInti\Html\Tag\Div;
+use Imadepurnamayasa\PhpInti\Html\Tag\H1;
+use Imadepurnamayasa\PhpInti\Html\Tag\P;
 
 class Heroes extends Bootstrap
 {

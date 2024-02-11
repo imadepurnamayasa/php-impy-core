@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Tag;
 
-class Footer extends Element
+use Imadepurnamayasa\PhpInti\Html\Element;
+
+class Head extends Element
 {
     public function __construct()
     {
-        parent::__construct('footer');
+        parent::__construct('head');
     }
 
     public function getContent(): string

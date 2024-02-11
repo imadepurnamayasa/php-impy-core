@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Tag;
 
-class TextArea extends Element
+use Imadepurnamayasa\PhpInti\Html\Element;
+
+class H2 extends Element
 {
     private $content;
 
     public function __construct(string $id, string $content)
     {
-        parent::__construct('textarea');
+        parent::__construct('h2');
         $this->setId($id);
         $this->content = $content;
     }

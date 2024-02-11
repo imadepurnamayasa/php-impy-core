@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Tag;
 
-class Script extends Element
+use Imadepurnamayasa\PhpInti\Html\Element;
+
+class Nav extends Element
 {
     public function __construct()
     {
-        parent::__construct('script');
+        parent::__construct('nav');
     }
 
     public function getContent(): string

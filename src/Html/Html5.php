@@ -4,6 +4,16 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Html;
 
+use Imadepurnamayasa\PhpInti\Html\Tag\Body;
+use Imadepurnamayasa\PhpInti\Html\Tag\Footer;
+use Imadepurnamayasa\PhpInti\Html\Tag\Head;
+use Imadepurnamayasa\PhpInti\Html\Tag\Header;
+use Imadepurnamayasa\PhpInti\Html\Tag\Html;
+use Imadepurnamayasa\PhpInti\Html\Tag\Main;
+use Imadepurnamayasa\PhpInti\Html\Tag\Meta;
+use Imadepurnamayasa\PhpInti\Html\Tag\Script;
+use Imadepurnamayasa\PhpInti\Html\Tag\Title;
+
 class Html5 extends Element
 {
     protected $head;

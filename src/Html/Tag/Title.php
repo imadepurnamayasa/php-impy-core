@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Tag;
 
-class Text extends Element
+use Imadepurnamayasa\PhpInti\Html\Element;
+
+class Title extends Element
 {
     private $content;
 
     public function __construct(string $id, string $content)
     {
-        parent::__construct('');
+        parent::__construct('title');
         $this->setId($id);
         $this->content = $content;
     }

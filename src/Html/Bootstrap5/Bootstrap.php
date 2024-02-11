@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Html\Bootstrap5;
 
-use Imadepurnamayasa\PhpInti\Html\Body;
 use Imadepurnamayasa\PhpInti\Html\Element;
-use Imadepurnamayasa\PhpInti\Html\Footer;
-use Imadepurnamayasa\PhpInti\Html\Head;
-use Imadepurnamayasa\PhpInti\Html\Header;
-use Imadepurnamayasa\PhpInti\Html\Html;
-use Imadepurnamayasa\PhpInti\Html\Link;
-use Imadepurnamayasa\PhpInti\Html\Main;
-use Imadepurnamayasa\PhpInti\Html\Meta;
-use Imadepurnamayasa\PhpInti\Html\Script;
-use Imadepurnamayasa\PhpInti\Html\Title;
+use Imadepurnamayasa\PhpInti\Html\Tag\Body;
+use Imadepurnamayasa\PhpInti\Html\Tag\Footer;
+use Imadepurnamayasa\PhpInti\Html\Tag\Head;
+use Imadepurnamayasa\PhpInti\Html\Tag\Header;
+use Imadepurnamayasa\PhpInti\Html\Tag\Html;
+use Imadepurnamayasa\PhpInti\Html\Tag\Link;
+use Imadepurnamayasa\PhpInti\Html\Tag\Main;
+use Imadepurnamayasa\PhpInti\Html\Tag\Meta;
+use Imadepurnamayasa\PhpInti\Html\Tag\Script;
+use Imadepurnamayasa\PhpInti\Html\Tag\Title;
 
 class Bootstrap extends Element
 {

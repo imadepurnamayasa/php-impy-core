@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Tag;
 
-class H4 extends Element
+use Imadepurnamayasa\PhpInti\Html\Element;
+
+class Label extends Element
 {
     private $content;
 
     public function __construct(string $id, string $content)
     {
-        parent::__construct('h4');
+        parent::__construct('label');
         $this->setId($id);
         $this->content = $content;
     }

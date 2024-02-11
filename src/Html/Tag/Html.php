@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html;
+namespace Imadepurnamayasa\PhpInti\Html\Tag;
 
-class Nav extends Element
+use Imadepurnamayasa\PhpInti\Html\Element;
+
+class Html extends Element
 {
     public function __construct()
     {
-        parent::__construct('nav');
+        parent::__construct('html');
     }
 
     public function getContent(): string

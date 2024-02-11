@@ -7,10 +7,11 @@ namespace Imadepurnamayasa\PhpInti\Html;
 class Html5 extends Element
 {
     protected $head;
+    protected $body;
     protected $header;
     protected $main;
-    protected $footer;
-    protected $body;
+    protected $footer;    
+    protected $script;
 
     public function __construct(string $title)
     {
@@ -26,10 +27,10 @@ class Html5 extends Element
         $meta2->addAttribute('content', 'width=device-width, initial-scale=1.0');
 
         $this->head = new Head();
-        $this->head->setId('head');
-        $this->head->addElement(new Title('title', $title));
+        $this->head->setId('head');        
         $this->head->addElement($meta1);
         $this->head->addElement($meta2);
+        $this->head->addElement(new Title('title', $title));
 
         $this->header = new Header();
         $this->header->setId('header');
@@ -40,11 +41,15 @@ class Html5 extends Element
         $this->footer = new Footer();
         $this->footer->setId('footer');
 
+        $this->script = new Script();
+        $this->script->setId('script');
+
         $this->body = new Body();
         $this->body->setId('body');
         $this->body->addElement($this->header);
         $this->body->addElement($this->main);
         $this->body->addElement($this->footer);
+        $this->body->addElement($this->script);
 
         $html = new Html();
         $html->setId('html');
@@ -78,5 +83,10 @@ class Html5 extends Element
     public function getFooter()
     {
         return $this->footer;
+    }
+
+    public function getScript()
+    {
+        return $this->script;
     }
 }

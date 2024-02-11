@@ -1,16 +1,6 @@
 <?php
 
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Bootstrap;
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertDanger;
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertDark;
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertInfo;
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertLight;
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertPrimary;
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertSecondary;
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertSuccess;
-use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertWarning;
 use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Heroes;
-use Imadepurnamayasa\PhpInti\Html\H1;
 
 ini_set('display_errors', 1);
 

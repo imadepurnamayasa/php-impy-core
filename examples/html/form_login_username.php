@@ -1,11 +1,11 @@
 <?php
 
-use Imadepurnamayasa\PhpInti\Html\Button;
-use Imadepurnamayasa\PhpInti\Html\Form;
-use Imadepurnamayasa\PhpInti\Html\Hr;
 use Imadepurnamayasa\PhpInti\Html\Html5;
-use Imadepurnamayasa\PhpInti\Html\Input;
-use Imadepurnamayasa\PhpInti\Html\P;
+use Imadepurnamayasa\PhpInti\Html\Tag\Button;
+use Imadepurnamayasa\PhpInti\Html\Tag\Form;
+use Imadepurnamayasa\PhpInti\Html\Tag\Hr;
+use Imadepurnamayasa\PhpInti\Html\Tag\Input;
+use Imadepurnamayasa\PhpInti\Html\Tag\P;
 
 ini_set('display_errors', 1);
 

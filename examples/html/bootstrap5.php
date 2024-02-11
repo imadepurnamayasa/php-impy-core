@@ -9,7 +9,7 @@ use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertPrimary;
 use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertSecondary;
 use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertSuccess;
 use Imadepurnamayasa\PhpInti\Html\Bootstrap5\Components\AlertWarning;
-use Imadepurnamayasa\PhpInti\Html\H1;
+use Imadepurnamayasa\PhpInti\Html\Tag\H1;
 
 ini_set('display_errors', 1);
 

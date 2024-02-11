@@ -1,9 +1,9 @@
 <?php
 
-use Imadepurnamayasa\PhpInti\Html\H2;
 use Imadepurnamayasa\PhpInti\Html\Html5;
-use Imadepurnamayasa\PhpInti\Html\P;
-use Imadepurnamayasa\PhpInti\Html\Section;
+use Imadepurnamayasa\PhpInti\Html\Tag\H2;
+use Imadepurnamayasa\PhpInti\Html\Tag\P;
+use Imadepurnamayasa\PhpInti\Html\Tag\Section;
 
 ini_set('display_errors', 1);
 

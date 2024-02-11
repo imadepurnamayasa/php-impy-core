@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Html\Bootstrap;
+namespace Imadepurnamayasa\PhpInti\Html\Bootstrap5;
 
 use Imadepurnamayasa\PhpInti\Html\Body;
 use Imadepurnamayasa\PhpInti\Html\Element;
@@ -16,7 +16,7 @@ use Imadepurnamayasa\PhpInti\Html\Meta;
 use Imadepurnamayasa\PhpInti\Html\Script;
 use Imadepurnamayasa\PhpInti\Html\Title;
 
-class Bootstrap5 extends Element
+class Bootstrap extends Element
 {
     protected $head;
     protected $body;

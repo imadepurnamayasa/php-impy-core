@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Database;
+namespace Imadepurnamayasa\PhpInti\Database\Interface;
 
-interface CRUD
+interface CrudInterface
 {
     public function findById($id);
     public function findAll();

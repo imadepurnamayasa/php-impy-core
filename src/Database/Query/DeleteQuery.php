@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Database\Query;
 
-abstract class DeleteQuery
+abstract class DeleteQuery extends Query
 {    
-    public static function byId(string $table)
+    public function render(): string
     {
-        $sql = "DELETE FROM $table WHERE id = :id";
-
-        return $sql;
+        return '';
     }
 }

@@ -4,14 +4,10 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Database\Query;
 
-use Imadepurnamayasa\PhpInti\Database\Connection\ConnectionInterface;
-
-abstract class SelectQuery
+abstract class SelectQuery extends Query
 {    
-    private ConnectionInterface $pdo;
-
-    public function __construct(ConnectionInterface $pdo)
+    public function render(): string
     {
-        $this->pdo = $pdo;
+        return '';
     }
 }

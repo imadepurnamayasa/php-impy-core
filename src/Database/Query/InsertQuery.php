@@ -4,16 +4,10 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Database\Query;
 
-abstract class InsertQuery
+abstract class InsertQuery extends Query
 {    
-    public static function default(string $table, array $data = [])
+    public function render(): string
     {
-        $sql = "INSERT INTO $table (";
-        $sql .= implode(", ", array_keys($data));
-        $sql .= ") VALUES (";
-        $sql .= ":" . implode(", :", array_keys($data));
-        $sql .= ")";
-
-        return $sql;
+        return '';
     }
 }

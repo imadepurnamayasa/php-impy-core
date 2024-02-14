@@ -7,22 +7,22 @@ namespace Imadepurnamayasa\PhpInti\Database\Connection;
 use PDO;
 use PDOException;
 
-abstract class PDOConnection
+abstract class PDOConnection implements ConnectionInterface
 {
     private $pdo;
     protected string $host;
     protected int $port;
     protected string $username;
     protected string $password;
-    protected string $dbname;    
-    protected array $options;  
+    protected string $dbname;
+    protected array $options;
 
     public function __construct(
-        string $host, 
-        int $port, 
-        string $username, 
-        string $password, 
-        string $dbname, 
+        string $host,
+        int $port,
+        string $username,
+        string $password,
+        string $dbname,
         array $options = []
     ) {
         $this->host = $host;
@@ -32,12 +32,12 @@ abstract class PDOConnection
         $this->dbname = $dbname;
         $this->options = $options;
     }
-    
+
     public function open(): bool
     {
         try {
             $this->pdo = new PDO($this->getDsn(), $this->username, $this->password, $this->options);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);            
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             return false;
         } finally {
@@ -45,15 +45,18 @@ abstract class PDOConnection
         }
     }
 
-    public function close()
-    {        
+    public function close(): void
+    {
         $this->pdo = null;
     }
 
-    public function getConnection()
+    public function getConnection(): PDO
     {
         return $this->pdo;
     }
 
-    abstract function getDsn();
+    public function getDsn(): string
+    {
+        return '';
+    }
 }

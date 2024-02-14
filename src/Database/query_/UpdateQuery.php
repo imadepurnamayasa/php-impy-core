@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Imadepurnamayasa\PhpInti\Database\Table;
+namespace Imadepurnamayasa\PhpInti\Database\Query;
 
 use Imadepurnamayasa\PhpInti\Database\Connection\ConnectionInterface;
 
-abstract class CreateTable
+abstract class UpdateQuery
 {    
     private ConnectionInterface $pdo;
 

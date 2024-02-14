@@ -6,5 +6,5 @@ namespace Imadepurnamayasa\PhpInti\Database\Query;
 
 abstract class InsertQuery
 {    
-   
+    private $pdo;
 }

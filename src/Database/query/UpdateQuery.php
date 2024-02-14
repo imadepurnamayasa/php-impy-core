@@ -6,5 +6,5 @@ namespace Imadepurnamayasa\PhpInti\Database\Query;
 
 abstract class UpdateQuery
 {    
-   
+    private $pdo;
 }

@@ -9,7 +9,7 @@ use PDOException;
 
 abstract class PDOConnection
 {
-    protected $pdo;
+    private $pdo;
     protected string $host;
     protected int $port;
     protected string $username;

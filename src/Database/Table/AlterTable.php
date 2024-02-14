@@ -6,5 +6,5 @@ namespace Imadepurnamayasa\PhpInti\Database\Table;
 
 abstract class AlterTable
 {    
-   
+    private $pdo;
 }

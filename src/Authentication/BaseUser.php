@@ -10,7 +10,7 @@ use Imadepurnamayasa\PhpInti\Helpers;
 abstract class BaseUser extends ORM
 {
     protected $table = 'users';
-    protected $primariKey = 'id';
+    protected $primaryKey = 'id';
     protected $username = 'username';
     protected $password = 'password';
     protected $email = 'email';

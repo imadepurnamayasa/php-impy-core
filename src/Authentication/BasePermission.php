@@ -9,5 +9,5 @@ use Imadepurnamayasa\PhpInti\Database\ORM;
 abstract class BasePermission extends ORM
 {
     protected $table = 'permissions';
-    protected $primariKey = 'id';
+    protected $primaryKey = 'id';
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Database;
 
-use Imadepurnamayasa\PhpInti\Database\PDOConnection;
+use Imadepurnamayasa\PhpInti\Database\Connection\PDOConnection;
 use PDO;
 
 abstract class ORM

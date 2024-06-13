@@ -1,3 +1,3 @@
 # php-inti
  
-PHP Script for help develope web application
+Kumpulan PHP Scrip yang membantu dalam pembuatan sistem

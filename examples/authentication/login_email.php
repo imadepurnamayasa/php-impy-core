@@ -18,7 +18,7 @@ $password = 'johndoe';
 $token = '';
 
 if ($user->loginByEmail($email, $password)) {
-    $token = $user->generateTokenEmail($email);
+    $token = $user->token;
     echo json_encode(array("token" => $token));
 } else {
     echo json_encode(array("error" => "Authentication failed"));
@@ -32,9 +32,13 @@ echo $receivedToken = $token;
 echo '<hr>';
 
 // Check if the token is valid
-$email = $user->validateTokenEmail($receivedToken);
-if ($email !== false) {
-    echo "Token is valid for email: $email";
+$payload = $user->validateTokenEmail($receivedToken);
+if ($payload !== false) {
+    echo "Token is valid for email: {$payload['email']}";
 } else {
     echo "Token is not valid";
 }
+
+Helpers::print_r($user);
+
+$pdo->close();

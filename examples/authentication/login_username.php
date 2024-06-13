@@ -18,7 +18,7 @@ $password = 'johndoe';
 $token = '';
 
 if ($user->loginByUsername($username, $password)) {
-    $token = $user->generateTokenUsername($username);
+    $token = $user->token;
     echo json_encode(array("token" => $token));
 } else {
     echo json_encode(array("error" => "Authentication failed"));
@@ -32,9 +32,9 @@ echo $receivedToken = $token;
 echo '<hr>';
 
 // Check if the token is valid
-$username = $user->validateTokenUsername($receivedToken);
-if ($username !== false) {
-    echo "Token is valid for username: $username";
+$payload = $user->validateTokenUsername($receivedToken);
+if ($payload !== false) {
+    echo "Token is valid for username: {$payload['username']}";
 } else {
     echo "Token is not valid";
 }

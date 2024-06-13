@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Authentication;
 
+use DateTime;
 use Imadepurnamayasa\PhpInti\Database\ORM;
 use Imadepurnamayasa\PhpInti\Helpers;
 
@@ -11,12 +12,13 @@ abstract class BaseUser extends ORM
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $username = 'username';
-    protected $password = 'password';
-    protected $email = 'email';
-    protected $token = 'token';
-    protected $tokenExpired = 'token_expired';
-    protected $secretKey = 'your_secret_key';
+    public $id = 'id';
+    public $username = 'username';
+    public $password = 'password';
+    public $email = 'email';
+    public $token = 'token';
+    public $tokenExpired = 'token_expired';
+    public $secretKey = 'your_secret_key';
 
     public function loginByUsername($username, $password)
     {
@@ -24,7 +26,17 @@ abstract class BaseUser extends ORM
         $stmt->execute([$username]);
         $user = $stmt->fetch();
 
-        if ($user && Helpers::passwordVerify($password, $user['password'])) {
+        if ($user && Helpers::passwordVerify($password, $user['password'])) 
+        {
+            $this->generateTokenUsername($user['id'], $user['username']);
+            $this->id = $user['id'];
+            $this->username = $user['username'];
+            $this->email = $user['email'];
+            $this->password = $user['password'];
+            if ($user['secret_key'] != null) 
+            {
+                $this->secretKey = $user['secret_key'];
+            }
             
             return true;
         }
@@ -39,23 +51,35 @@ abstract class BaseUser extends ORM
         $user = $stmt->fetch();
 
         if ($user && Helpers::passwordVerify($password, $user['password'])) {
-            
+            $this->generateTokenEmail($user['id'], $user['email']);
+            $this->id = $user['id'];
+            $this->username = $user['username'];
+            $this->email = $user['email'];
+            $this->password = $user['password'];
+            if ($user['secret_key'] != null) 
+            {
+                $this->secretKey = $user['secret_key'];
+            }
+
             return true;
         }
 
         return false;
     }
 
-    public function generateTokenUsername($username)
+    public function generateTokenUsername($id, $username)
     {
+        $exp = time() + (60 * 60); // Token expiration time (1 hour)
+
         // Create a JSON Web Token (JWT)
         $header = [
             'typ' => 'JWT',
             'alg' => 'HS256'
         ];
         $payload = [
+            'id' => $id,
             'username' => $username,
-            'exp' => time() + (60 * 60) // Token expiration time (1 hour)
+            'exp' => $exp
         ];
 
         $base64UrlHeader = base64_encode(json_encode($header));
@@ -63,19 +87,33 @@ abstract class BaseUser extends ORM
         $signature = hash_hmac('sha256', "$base64UrlHeader.$base64UrlPayload", $this->secretKey, true);
         $base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
 
-        return "$base64UrlHeader.$base64UrlPayload.$base64UrlSignature";
+        $token = "$base64UrlHeader.$base64UrlPayload.$base64UrlSignature";
+
+        $this->token = $token;
+        $this->tokenExpired = $exp;
+
+        $this->update($this->id,
+        [
+            'token' => $this->token,
+            'token_expired' => date('Y-m-d H:i:s', $this->tokenExpired)
+        ]);
+
+        return $this->token;
     }
 
-    public function generateTokenEmail($email)
+    public function generateTokenEmail($id, $email)
     {
+        $exp = time() + (60 * 60); // Token expiration time (1 hour)
+
         // Create a JSON Web Token (JWT)
         $header = [
             'typ' => 'JWT',
             'alg' => 'HS256'
         ];
         $payload = [
+            'id' => $id,
             'email' => $email,
-            'exp' => time() + (60 * 60) // Token expiration time (1 hour)
+            'exp' => $exp
         ];
 
         $base64UrlHeader = base64_encode(json_encode($header));
@@ -83,7 +121,18 @@ abstract class BaseUser extends ORM
         $signature = hash_hmac('sha256', "$base64UrlHeader.$base64UrlPayload", $this->secretKey, true);
         $base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
 
-        return "$base64UrlHeader.$base64UrlPayload.$base64UrlSignature";
+        $token = "$base64UrlHeader.$base64UrlPayload.$base64UrlSignature";
+
+        $this->token = $token;
+        $this->tokenExpired = $exp;
+
+        $this->update($this->id,
+        [
+            'token' => $this->token,
+            'token_expired' => date('Y-m-d H:i:s', $this->tokenExpired)
+        ]);
+
+        return $this->token;
     }
 
     public function validateTokenUsername($token)
@@ -102,7 +151,8 @@ abstract class BaseUser extends ORM
         $base64UrlValidSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($validSignature));
 
         if ($signature === $base64UrlValidSignature && $payload['exp'] >= time()) {
-            return $payload['username'];
+            $this->token = $token;
+            return $payload;
         } else {
             return false;
         }
@@ -124,7 +174,7 @@ abstract class BaseUser extends ORM
         $base64UrlValidSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($validSignature));
 
         if ($signature === $base64UrlValidSignature && $payload['exp'] >= time()) {
-            return $payload['email'];
+            return $payload;
         } else {
             return false;
         }

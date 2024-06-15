@@ -4,13 +4,14 @@ use Imadepurnamayasa\PhpInti\Crud\Action;
 use Imadepurnamayasa\PhpInti\Crud\Constants;
 use Imadepurnamayasa\PhpInti\Crud\Data;
 use Imadepurnamayasa\PhpInti\Crud\Form;
-use Imadepurnamayasa\PhpInti\Database\PDOMySQL;
+use Imadepurnamayasa\PhpInti\Database\Connection\PDOMySQL;
 
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$pdo = new PDOMySQL('localhost', 'test', 'root', 'root');
+$pdo = new PDOMySQL('localhost', 3306, 'root', 'root', 'test');
+$pdo->open();
 $form = new Form($pdo);
 $data = new Data($pdo);
 $action = new Action($pdo);

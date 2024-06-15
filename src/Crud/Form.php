@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Imadepurnamayasa\PhpInti\Crud;
 
-use Imadepurnamayasa\PhpInti\Html\Button;
-use Imadepurnamayasa\PhpInti\Html\Div;
-use Imadepurnamayasa\PhpInti\Html\Form as HtmlForm;
-use Imadepurnamayasa\PhpInti\Html\Input;
-use Imadepurnamayasa\PhpInti\Html\Label;
-use Imadepurnamayasa\PhpInti\Html\TextArea;
+use Imadepurnamayasa\PhpInti\Html\Tag\Button;
+use Imadepurnamayasa\PhpInti\Html\Tag\Div;
+use Imadepurnamayasa\PhpInti\Html\Tag\Form as HtmlForm;
+use Imadepurnamayasa\PhpInti\Html\Tag\Input;
+use Imadepurnamayasa\PhpInti\Html\Tag\Label;
+use Imadepurnamayasa\PhpInti\Html\Tag\TextArea;
 use PDO;
 
 class Form extends Crud
@@ -68,7 +68,7 @@ class Form extends Crud
                 $div = new Div('');
                 $div->setId("div{$row['name']}$rowIndex");
 
-                $label = new Label($row['name']);
+                $label = new Label('label',$row['name']);
                 $label->setId("label{$row['name']}$rowIndex");
                 $label->addAttribute('for', "input{$row['name']}$rowIndex");
 
@@ -100,7 +100,7 @@ class Form extends Crud
                         $input->addAttribute('value', $value);
                         $input->addAttribute('size', '50');
                     } else if (in_array($row['native_type'], ['BLOB'])) {
-                        $input = new TextArea($value);
+                        $input = new TextArea('textarea', $value);
                         $input->setId("input{$row['name']}$rowIndex");
                         $input->addAttribute('cols', '50');
                         $input->addAttribute('rows', '10');

@@ -81,7 +81,7 @@ class GridManager
             $table .= '<tr>';
             for ($j = 0; $j < $this->cols; $j++) {
                 $cellValue = $this->getCellValue($i, $j);
-                $table .= '<td>' . htmlspecialchars($cellValue) . '</td>';
+                $table .= '<td>' . ($cellValue) . '</td>';
             }
             $table .= '</tr>';
         }

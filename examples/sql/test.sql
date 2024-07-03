@@ -6,7 +6,7 @@ CREATE TABLE `crud`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `dt` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+);
 
 -- ----------------------------
 -- Records of crud
@@ -22,14 +22,14 @@ INSERT INTO `crud` VALUES (4, '2024-02-08 01:05:55');
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `username` varchar(255) NULL DEFAULT NULL,
+  `password` varchar(255) NULL DEFAULT NULL,
+  `email` varchar(255) NULL DEFAULT NULL,
+  `token` varchar(255) NULL DEFAULT NULL,
   `token_expired` datetime NULL DEFAULT NULL,
-  `secret_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `secret_key` varchar(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+);
 
 -- ----------------------------
 -- Records of users

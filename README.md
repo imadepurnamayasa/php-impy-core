@@ -1,3 +1,3 @@
 # php-inti
  
-PHP Package untuk memudahkan membuat aplikasi.
+PHP Package untuk memudahkan membuat aplikasi

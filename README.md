@@ -1,3 +1,3 @@
 # php-inti
  
-Kumpulan PHP Scrip yang membantu dalam pembuatan sistem
+PHP Package untuk memudahkan membuat aplikasi.
